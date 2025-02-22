@@ -1,0 +1,42 @@
+version: "3.1"
+
+flows:
+  appointment_scheduling:
+    description: Help users schedule medical appointments.
+    steps:
+      - collect: appointment_type
+      - collect: preferred_date
+      - collect: preferred_time
+      - action: action_check_appointment_availability
+        next:
+          - if: not slots.appointment_available
+            then: request_alternative_date
+          - else: confirm_appointment
+      
+      - action: utter_appointment_unavailable
+        id: request_alternative_date
+      - collect: alternative_date
+      - collect: alternative_time
+      - action: action_check_alternative_availability
+        next:
+          - if: slots.appointment_available
+            then: confirm_appointment
+          - if: slots.max_attempts_reached
+            then: no_availability
+          - else: request_alternative_date
+      
+      - action: utter_no_appointments_available
+        id: no_availability
+        next: END
+      
+      - collect: confirm_appointment
+        id: confirm_appointment
+        next:
+          - if: not slots.confirm_appointment
+            then:
+              - action: utter_appointment_not_confirmed
+                next: END
+          - else: appointment_scheduled
+      
+      - action: utter_appointment_scheduled
+        id: appointment_scheduled

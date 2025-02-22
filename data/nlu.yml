@@ -1,0 +1,151 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hi
+    - hello
+    - good morning
+    - hey there
+    - good afternoon
+    - good evening
+    - hello there
+    - hey
+    - what's up
+    - howdy
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you later
+    - farewell
+    - have a nice day
+    - take care
+    - so long
+    - bye bye
+    - I'm leaving
+    - I have to go
+
+- intent: help
+  examples: |
+    - what can you do?
+    - how can you help me?
+    - what are your capabilities?
+    - what can I ask you?
+    - how do I use this bot?
+    - what can you do for me?
+    - I need help
+    - assist me
+    - give me some information
+    - explain how this works
+
+- intent: find_clinic
+  examples: |
+    - I'm looking for a clinic in [location](San Francisco).
+    - Find me a clinic near [location](Seattle).
+    - Where is the nearest clinic in [location](New York City)?
+    - I need to find a doctor in [location](London) specializing in [specialty](cardiology).
+    - Find a clinic in [location](Houston).
+    - I'm searching for a clinic near me.
+    - Are there any clinics in [location](Atlanta)?
+    - I need to find a specialist in [specialty](dermatology) in [location](San Jose).
+    - I'm looking for a [specialty](pediatrics) clinic.
+    - Find me a [specialty](oncology) clinic near [location](Los Angeles).
+
+- intent: clinic_location 
+  examples: |
+    - Where is the [clinic_name](Stanford Clinic) located?
+    - What is the address of the [clinic_name](UCSF Medical Center)?
+    - How do I get to the [clinic_name](Kaiser Permanente)?
+    - Find the location of [clinic_name](Sutter Health).
+    - Where is [clinic_name](John Muir Health) located in [location](Walnut Creek)?
+
+- intent: find_doctor
+  examples: |
+    - Find me a doctor in [location](San Francisco).
+    - I'm looking for a [specialty](cardiologist) in [location](Berkeley).
+    - Where can I find a [specialty](pediatrician) near me?
+    - I need to find a doctor specializing in [specialty](neurology).
+    - Find a [specialty](oncologist) in [location](Oakland).
+    - Are there any [specialty](dermatologists) in [location](San Diego)?
+    - I'm looking for a [specialty](psychiatrist).
+    - Find a [specialty](surgeon) near me.
+
+- intent: appointment_info
+  examples: |
+    - I want to know about appointment availability.
+    - What appointments are available?
+    - Tell me about scheduling an appointment.
+    - How do I book an appointment?
+    - What's the process for scheduling?
+    - Can I make an appointment online?
+    - What are your appointment options?
+    - I'd like to know about available appointments.
+    - Are there any openings this week?
+    - What times are available for a checkup?
+
+- intent: schedule_appointment
+  examples: |
+    - I'd like to schedule an appointment for a [appointment_type](checkup).
+    - Can I book an appointment on [date](October 26th) at [time](2 PM)?
+    - Schedule me a [appointment_type](consultation) with Dr. Smith.
+    - I want to schedule an appointment for [appointment_type](physical therapy) on [date](November 10th).
+    - I need to schedule a [appointment_type](follow-up) appointment.
+    - Book me an appointment with a [specialty](cardiologist).
+    - I'd like to make an appointment for [appointment_type](annual exam).
+    - Can I schedule an appointment for [appointment_type](vaccination)?
+    - I want to book a [appointment_type](dental cleaning).
+    - Schedule me a [appointment_type](eye exam).
+
+- intent: patient_resources
+  examples: |
+    - I need information about diabetes.
+    - Where can I find resources on [topic](nutrition)?
+    - I'm looking for patient education materials on [topic](heart disease).
+    - I'd like to learn more about [topic](cancer).
+    - Find me some information on [topic](mental health).
+    - Where can I find support groups for [topic](anxiety)?
+    - I need resources on [topic](healthy eating).
+    - I'm looking for information about [topic](exercise).
+    - Find me some articles on [topic](sleep hygiene).
+    - I want to learn about [topic](stress management).
+
+- intent: affirm
+  examples: |
+    - yes
+    - yeah
+    - definitely
+    - absolutely
+    - of course
+    - that's right
+    - correct
+    - indeed
+    - I agree
+    - sounds good
+
+- intent: deny
+  examples: |
+    - no
+    - nope
+    - not really
+    - not at all
+    - I don't think so
+    - that's not right
+    - incorrect
+    - I disagree
+    - I don't want to
+    - no thanks
+
+- intent: nlu_fallback
+  examples: |
+    - I don't understand.
+    - Could you repeat that?
+    - I'm not sure what you mean.
+    - Can you rephrase that?
+    - I didn't get that.
+    - What are you talking about?
+    - Huh?
+    - I'm confused.
+    - Please explain.
+    - Try again.

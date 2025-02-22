@@ -1,0 +1,112 @@
+version: "3.1"
+
+slots:
+  appointment_type:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_llm
+  preferred_date:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_llm
+  preferred_time:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_llm
+  alternative_date:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_llm
+  alternative_time:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_llm
+  appointment_available:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_llm
+  confirm_appointment:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_llm
+  max_attempts_reached:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_llm   
+  attempt_counter:
+    type: float
+    initial_value: 0
+    influence_conversation: true
+ 
+
+
+responses:
+  utter_greet:
+    - text: "Hello! How can I help you schedule an appointment today?"
+
+  utter_goodbye:
+    - text: "Thank you for using our appointment scheduling service. Have a great day!"
+
+  utter_ask_appointment_type:
+    - text: "What type of appointment would you like to schedule?"
+
+  utter_ask_preferred_date:
+    - text: "On which date would you like to schedule your appointment?"
+
+  utter_ask_preferred_time:
+    - text: "What time would you prefer for your appointment?"
+
+  utter_appointment_unavailable:
+    - text: "I'm sorry, but that time slot is not available. Would you like to try a different date or time?"
+
+  utter_ask_alternative_date:
+    - text: "Please provide an alternative date for your appointment."
+
+  utter_ask_alternative_time:
+    - text: "Please provide an alternative time for your appointment."
+
+  utter_no_appointments_available:
+    - text: "I apologize, but there are no appointments available at the moment. Please try again later or contact our office directly."
+
+  utter_confirm_appointment:
+    - text: "Great! I have an available slot for a {appointment_type} appointment on {preferred_date} at {preferred_time}. Would you like to confirm this appointment?"
+
+  utter_appointment_scheduled:
+    - text: "Excellent! Your {appointment_type} appointment has been scheduled for {preferred_date} at {preferred_time}. We look forward to seeing you!"
+
+  utter_appointment_not_confirmed:
+    - text: "I understand. The appointment has not been confirmed. Is there anything else I can help you with?"
+  
+  utter_ask_confirm_appointment:
+    - text: "Would you like to confirm this appointment?"
+
+  utter_ask_help:
+    - text: "I can help you schedule appointments, find clinics or doctors, provide patient resources, and answer general questions. What would you like assistance with?"
+
+  utter_free_chitchat_response:
+    - text: "placeholder"
+      metadata:
+        rephrase: True
+        rephrase_prompt: |
+          The following is a conversation with an AI assistant built with Rasa.
+          The assistant is helpful, creative, clever, and very friendly.
+          The user is making small talk, and the assistant should respond, keeping things light.
+          Context / previous conversation with the user:
+          {{history}}
+          {{current_input}}
+          Suggested AI Response:
+
+actions:
+  - action_check_appointment_availability
+  - action_check_alternative_availability
+
+session_config:
+  carry_over_slots_to_new_session: true
